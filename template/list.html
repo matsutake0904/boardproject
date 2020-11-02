@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% block customcss %}
+<div class="alert alert-primary" role="alert">
+    Matweet
+  </div>
+
+{% endblock customcss %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    Domestic SNS
+  </div>
+{% endblock header %}
+
+{% block content %}
+<div class='container'>
+    {% for item in object_list %}
+    {% if item.auther == user.username %}
+    <div class="alert alert-primary" role="success">
+       <p>Title:<a href="{% url 'detail' item.pk %}">{{item.title}}</a></p>
+       <p>Upped by: {{item.auther}}</p>
+       <a href='' class='btn btn-primary active' role="button" aria-pressed="true" >Good! {{ item.good}} </a>
+       <a href='' class='btn btn-secondary active' role="button" aria-pressed="true" >Checked! {{ item.read }}</a>
+       <a href="{% url 'delete' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >delete</a>
+    </div>
+    {% endif%}
+    {% endfor %}
+    <a href="{% url 'logout' %}">logout</a>
+    <a href="{% url 'create' %}">Tweet</a>
+</div>
+{% endblock content %}

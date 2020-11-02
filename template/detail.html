@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+{% block customcss %}
+<div class="alert alert-primary" role="alert">
+    Matweet
+  </div>
+
+{% endblock customcss %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    Domestic SNS
+  </div>
+{% endblock header %}
+
+{% block content %}
+<div class='container'>
+    <div class="alert alert-primary" role="success">
+       <p>Title: {{object.title}}</p>
+       <p>Upped by: {{object.auther}}</p>
+       <p>Content: {{object.content}}</p>
+       <p>
+           <img src="{{object.images.url}}" width=500>
+       </p>
+       <a href="{% url 'good' object.pk %}" class='btn btn-primary active' role="button" aria-pressed="true" >Good!</a>
+       <a href="{% url 'read' object.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Checked!</a>
+    </div>
+</div>
+<a href="{% url 'list' %}">Back </a>
+{% endblock content %}
