@@ -5,8 +5,11 @@ from .models import BoardModel
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DeleteView
 from django.urls import reverse_lazy
+import logging
+import sys
 
 # Create your views here.
+logger = logging.getLogger(__name__)
 
 def signupfunc(request):
     user2 = User.objects.all()
@@ -55,6 +58,8 @@ def goodfunc(request, pk):
     post = BoardModel.objects.get(pk=pk)
     post.good = post.good + 1
     post.save()
+    logger.info('goodfunc ' + post.good)
+    print(post.good)
     return redirect('list')
 
 def readfunc(request, pk):
