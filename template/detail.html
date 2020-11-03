@@ -19,9 +19,11 @@
        <p>Title: {{object.title}}</p>
        <p>Upped by: {{object.auther}}</p>
        <p>Content: {{object.content}}</p>
-       <p>
+       {% if object.images != "" %}
+       <p> 
            <img src="{{object.images.url}}" width=500>
        </p>
+       {% endif %}
        <a href="{% url 'good' object.pk %}" class='btn btn-primary active' role="button" aria-pressed="true" >Good!</a>
        <a href="{% url 'read' object.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Checked!</a>
     </div>
