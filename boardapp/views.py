@@ -88,9 +88,9 @@ class BoardCreate(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        try:
+        if(self.kwargs.get('pk') != None):
             context['branch']=self.kwargs.get('pk')
-        except:
+        else:
             context['branch']=0
         return context
 
