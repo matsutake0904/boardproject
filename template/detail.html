@@ -26,7 +26,21 @@
        {% endif %}
        <a href="{% url 'good' object.pk %}" class='btn btn-primary active' role="button" aria-pressed="true" >Good!</a>
        <a href="{% url 'read' object.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Checked!</a>
+       <a href="{% url 'delete' object.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >delete</a>
+       <a href="{% url 'create' object.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Resist Child MEMO!</a>
     </div>
+  {% for item in object_list %}
+  {% if item.branch == object.pk %}
+  <div class="alert alert-primary" role="success">
+     <p>Title:<a href="{% url 'detail' item.pk %}">{{item.title}}</a></p>
+     <p>Upped by: {{item.auther}}</p>
+     <a href="{% url 'good' item.pk %}" class='btn btn-primary active' role="button" aria-pressed="true" >Good! {{ item.good}} </a>
+     <a href="{% url 'read' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Checked! {{ item.read }}</a>
+     <a href="{% url 'delete' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >delete</a>
+     <a href="{% url 'create' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Resist Child MEMO!</a>
+  </div>
+  {% endif%}
+  {% endfor %}
+  <a href="{% url 'list' %}">Back </a>
 </div>
-<a href="{% url 'list' %}">Back </a>
 {% endblock content %}

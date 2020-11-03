@@ -9,6 +9,9 @@
     <p>Picture: <input type="file" name="images">
     </p>
     <input type="hidden" name="auther" value="{{ user.username}}">
+    <input type="text" name="branch" value="{{ branch }}">
+    
+    <!-- <input type="hidden" name="branch" value="{{ branch }"}> -->
     <input type="submit" value="resist">
     <a href="{% url 'list' %}">Back To List</a>
 </form>

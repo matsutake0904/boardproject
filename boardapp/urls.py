@@ -12,5 +12,7 @@ urlpatterns = [
     path('good/<int:pk>', goodfunc, name='good'),
     path('read/<int:pk>', readfunc, name='read'),
     path('delete/<int:pk>', BoardDelete.as_view(), name='delete'),
-    path('create/', BoardCreate.as_view(), name='create')
+    path('create/', BoardCreate.as_view(), name='create'),
+    path('create/<int:pk>', BoardCreate.as_view(), name='create')
+
 ]

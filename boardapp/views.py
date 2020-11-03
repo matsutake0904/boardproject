@@ -52,14 +52,15 @@ def logoutfunc(request):
 
 def detailfunc(request, pk):
     object=BoardModel.objects.get(pk=pk)
-    return render(request, 'detail.html',{'object': object})
+    object_list = BoardModel.objects.all() 
+    print('detail')
+    return render(request, 'detail.html',{'object': object, 'object_list':object_list})
 
 def goodfunc(request, pk):
     post = BoardModel.objects.get(pk=pk)
     post.good = post.good + 1
     post.save()
-    logger.info('goodfunc ' + post.good)
-    print(post.good)
+    print('good')
     return redirect('list')
 
 def readfunc(request, pk):
@@ -81,5 +82,29 @@ class BoardDelete(DeleteView):
 class BoardCreate(CreateView):
     template_name = 'create.html'
     model = BoardModel
-    fields = ('title', 'content', 'auther' , 'images')
+    branch = 0
+    fields = ('title', 'content', 'auther' , 'images', 'branch')
     success_url = reverse_lazy('list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            context['branch']=self.kwargs.get('pk')
+        except:
+            context['branch']=0
+        return context
+
+    # def get_queryset(self):
+    #     branch=0
+    #     try:
+    #         self.kwargs.get('branch', branch)
+    #         return branch
+    #     except:
+    #         return branch
+ 
+# class BoardCreateBranch(CreateView):
+#     template_name = 'create.html'
+#     model = BoardModel
+#     fields = ('title', 'content', 'auther' , 'images', 'branch')
+#     success_url = reverse_lazy('list')
+
