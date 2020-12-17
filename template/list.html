@@ -16,17 +16,44 @@
 {% block content %}
 <div class='container'>
     {% for item in object_list %}
+    {% if not item.checked %}
     {% if item.auther == user.username and item.branch == 0 %}
     <div class="alert alert-primary" role="success">
        <p>Title:<a href="{% url 'detail' item.pk %}">{{item.title}}</a></p>
        <p>Upped by: {{item.auther}}</p>
-       <a href="{% url 'good' item.pk %}" class='btn btn-primary active' role="button" aria-pressed="true" >Good! {{ item.good}} </a>
-       <a href="{% url 'read' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Checked! {{ item.read }}</a>
+       {% if item.checked %}
+           <a href="{% url 'checked' item.pk %}" class='btn btn-primary active' role="button" aria-pressed="true" >Checked!</a>
+       {% else %}
+          <a href="{% url 'checked' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Not checked</a>
+       {% endif %}
        <a href="{% url 'delete' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >delete</a>
+       <a href="{% url 'create' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Resist Child MEMO!</a>
+
     </div>
+    {% endif%}
     {% endif%}
     {% endfor %}
     <a href="{% url 'logout' %}">logout</a>
-    <a href="{% url 'create' %}">Tweet</a>
+    <a href="{% url 'create' %}">New Memo</a>
+
 </div>
+<!-- <div id="text_btn" class="btn fa facebook">
+  <h1>test</h1>
+  <h2></h2>
+</div>
+<script src="../static/js/front.js"></script> -->
 {% endblock content %}
+
+{% block sidebar %}
+  <div><h1 style="background-color:darkblue; color: white; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Checked items</h1></div>
+  {% for item in object_list %}
+  {% if item.checked %}
+    {% if item.auther == user.username and item.branch == 0 %}
+    <div class="alert alert-primary" role="success">
+      <p>Title:<a href="{% url 'detail' item.pk %}">{{item.title}}</a></p>
+    </div>
+    {% endif %}
+  {% endif %}
+  {% endfor %}
+
+{% endblock sidebar %}  

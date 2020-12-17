@@ -2,10 +2,9 @@ from django.db import models
 
 class BoardModel(models.Model):
     title = models.CharField(max_length = 100)
-    content = models.TextField()
-    auther = models.CharField(max_length = 100)
+    content = models.TextField(null=True, blank=True)
+    auther = models.CharField(null=True,max_length = 100)
     images = models.ImageField(upload_to='', blank=True)
-    good = models.IntegerField(null=True, blank=True, default=0)
-    read = models.IntegerField(null=True, blank=True, default=0)    
-    readtext = models.CharField(max_length=200, null=True, blank=True, default=' ')
+    checked = models.BooleanField(null=True, blank=True, default=False)
     branch = models.IntegerField(default=0)
+    

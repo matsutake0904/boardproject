@@ -23,7 +23,7 @@ def signupfunc(request):
         except:
             user = User.objects.create_user(user_name, ' ', password)
         
-        return render(request, 'signup.html', {'some' : 100})
+        return redirect('login') 
     ##return data conbined template 
     return render(request, 'signup.html', {'some' : 100})
 
@@ -41,9 +41,7 @@ def loginfunc(request):
 
 @login_required
 def listfunc(request):
-        object_list = BoardModel.objects.all() 
-        print('objct list')
-        print(object_list)
+        object_list = BoardModel.objects.all().order_by('pk')
         return render(request, 'list.html', {'object_list' : object_list})
 
 def logoutfunc(request):
@@ -56,12 +54,31 @@ def detailfunc(request, pk):
     print('detail')
     return render(request, 'detail.html',{'object': object, 'object_list':object_list})
 
-def goodfunc(request, pk):
+# def goodfunc(request, pk):
+#     post = BoardModel.objects.get(pk=pk)
+#     post.good = post.good + 1
+#     post.save()
+#     print('good')
+#     return redirect('list')
+
+def checkedfunc(request, pk):
     post = BoardModel.objects.get(pk=pk)
-    post.good = post.good + 1
+    if (post.checked):
+        post.checked = False
+    else:
+        post.checked = True
     post.save()
-    print('good')
     return redirect('list')
+
+def checkedfunc_del(request, pk):
+    post = BoardModel.objects.get(pk=pk)
+    if (post.checked):
+        post.checked = False
+    else:
+        post.checked = True
+    post.save()
+    object_list = BoardModel.objects.all() 
+    return render(request, 'detail.html',{'object': post, 'object_list':object_list})
 
 def readfunc(request, pk):
     post = BoardModel.objects.get(pk=pk)
@@ -94,6 +111,13 @@ class BoardCreate(CreateView):
             context['branch']=0
         return context
 
+# def siginup_func(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = User.objects.create_user(username, '', password)
+#         return render(request, '', {})        
+#     return render(request, '', {})
     # def get_queryset(self):
     #     branch=0
     #     try:
@@ -107,4 +131,3 @@ class BoardCreate(CreateView):
 #     model = BoardModel
 #     fields = ('title', 'content', 'auther' , 'images', 'branch')
 #     success_url = reverse_lazy('list')
-

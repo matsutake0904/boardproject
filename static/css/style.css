@@ -88,12 +88,6 @@ body {
   margin-top: 50;
 } 
 
-/* .create_form h1{
-  display: inline-block;
-  margin: 0 auto;
-  background-color: aqua;
-} */
-
 .main_page{
   width: 80%;
   margin-left: 5px;
@@ -105,3 +99,8 @@ body {
   width: 15%;
   margin-left: 3% ;
 }
+/* .create_form h1{
+  display: inline-block;
+  margin: 0 auto;
+  background-color: aqua;
+} */
