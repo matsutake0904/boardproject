@@ -43,51 +43,7 @@ body {
   border-top-right-radius: 0;
 } */
 
-.create_form {
-  /* background-color: #ff0000; */
-  width: 80%;
-  margin: 0 auto;
-  background-image: url("./Screenshot_from_2020-05-01_15-40-21.png");
-  opacity: 0.5;
-}
-
-.create_content{
-  margin: 10 auto;
-  background-color: aqua;
-}
-
-.create_content h1{
-  float: left;
-  margin : 0 0;
-}
-
-.title_create{
-  margin: 10 auto;
-  background-color: aqua;
-}
-
-.title_create input{
-  display: block;
-  margin-top: 50;
-} 
- .title_create h1{
-  float: left;
-} 
-.clear {
-  clear: left;
-}
-.create_picture{
-  margin: 10 auto;
-  background-color: aqua;
-}
-.create_picture h1{
-  float: left;
-} 
-.create_picture input{
-  display: block;
-  margin-top: 50;
-} 
-
+/*  Base Css */
 .main_page{
   width: 70%;
   margin-left: 2px;
@@ -137,12 +93,96 @@ body {
   cursor: pointer;
 }
 
+/*  Create CSS */
 
+.create_form {
+  /* background-color: #ff0000; */
+  width: 80%;
+  margin: 0 auto;
+  background-image: url("./Screenshot_from_2020-05-01_15-40-21.png");
+  opacity: 0.5;
+}
+
+.create_content{
+  margin: 10 auto;
+  background-color: aqua;
+}
+
+.create_content h1{
+  float: left;
+  margin : 0 0;
+}
+
+.title_create{
+  margin: 10 auto;
+  background-color: aqua;
+}
+
+.title_create input{
+  display: block;
+  margin-top: 50;
+} 
+ .title_create h1{
+  float: left;
+} 
+.clear {
+  clear: left;
+}
+.create_picture{
+  margin: 10 auto;
+  background-color: aqua;
+}
+.create_picture h1{
+  float: left;
+} 
+.create_picture input{
+  display: block;
+  margin-top: 50;
+} 
+
+
+
+/* Login Css */
 .login_error {
   background-color: rgba(246, 255, 125, 0.555);
   width: 100%;
 }
 .login_error span{
   color:rgba(255, 0, 0, 0.671);
+  text-align: center;
+}
+
+
+
+/* Detail css */
+.parent_item{
+  width: 100%;
+  background-color: rgb(170, 214, 240);
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+
+}
+
+.child_items{
+  margin-top: 10px;
+  width: 100%;
+  background-color: rgb(197, 248, 252);
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+}
+.child_item{
+  margin: 5px auto;
+  width: 90%;
+
+}
+
+.parent_header {
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+}
+.child_header {
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-align: center;
 }

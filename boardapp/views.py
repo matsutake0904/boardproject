@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from .models import BoardModel
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 import logging
 import sys
 
@@ -103,8 +103,15 @@ class BoardCreate(CreateView):
     model = BoardModel
     branch = 0
     fields = ('title', 'content', 'auther' , 'images', 'branch')
-    success_url = reverse_lazy('list')
-
+    # success_url = reverse_lazy('list')
+    def get_success_url(self):
+        if self.request.POST.get('branch') == 0:
+            print('branch == ' + str(self.request.POST.get('branch')))
+            return reverse('list')
+        else:
+            print('branch == ' + str(self.request.POST.get('branch')))
+            return reverse('detail', kwargs={"pk": self.request.POST.get('branch')})
+        
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if(self.kwargs.get('pk') != None):
