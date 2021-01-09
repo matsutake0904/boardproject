@@ -22,8 +22,10 @@ def signupfunc(request):
             return render(request, 'signup.html',{'error':'This username is already resistered !'})
         except:
             user = User.objects.create_user(user_name, ' ', password)
-        
-        return redirect('login') 
+            login(request, user)
+            return redirect('login') 
+     
+
     ##return data conbined template 
     return render(request, 'signup.html', {'some' : 100})
 
@@ -36,7 +38,7 @@ def loginfunc(request):
             login(request, user)
             return redirect('list')
         else:
-            return redirect('login')
+            return render(request,'login.html', {'error': 'This username or/and password is not registed. Please Signup!'})
     return render(request, 'login.html', {'some' : 100})
 
 @login_required

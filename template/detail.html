@@ -2,15 +2,13 @@
 
 {% block customcss %}
 <div class="alert alert-primary" role="alert">
-    Matweet
+    Oyako Memo
   </div>
 
 {% endblock customcss %}
 
 {% block header %}
-<div class="alert alert-primary" role="alert">
-    Domestic SNS
-  </div>
+
 {% endblock header %}
 
 {% block content %}
@@ -49,7 +47,8 @@
 {% endblock content %}
 
 {% block sidebar%}
-<div><h1 style="background-color:darkblue; color: white; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Checked items</h1></div>
+<div class ="sidevar-top">
+  <h2 >Checked items</h2></div>
 {% for item in object_list %}
 {% if item.checked %}
   {% if item.auther == user.username and item.branch == object.pk %}

@@ -2,15 +2,17 @@
 
 {% block customcss %}
 <div class="alert alert-primary" role="alert">
-    Matweet
-  </div>
+    Oyako Memo
+    <div class="menu_icon">
+      <span href="#" class="fa fa-bars"></span>
+
+    </div>
+</div>
 
 {% endblock customcss %}
 
 {% block header %}
-<div class="alert alert-primary" role="alert">
-    Domestic SNS
-  </div>
+
 {% endblock header %}
 
 {% block content %}
@@ -28,7 +30,7 @@
        {% endif %}
        <a href="{% url 'delete' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >delete</a>
        <a href="{% url 'create' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Resist Child MEMO!</a>
-
+      
     </div>
     {% endif%}
     {% endif%}
@@ -44,12 +46,15 @@
 <script src="../static/js/front.js"></script> -->
 {% endblock content %}
 
+
+<!-- Sidebar Block -->
 {% block sidebar %}
-  <div><h1 style="background-color:darkblue; color: white; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Checked items</h1></div>
+  <div>
+    <h1 class= "sidebar-top ">Checked items</h1></div>
   {% for item in object_list %}
   {% if item.checked %}
     {% if item.auther == user.username and item.branch == 0 %}
-    <div class="alert alert-primary" role="success">
+    <div class="alert alert-primary side_item" role="success">
       <p>Title:<a href="{% url 'detail' item.pk %}">{{item.title}}</a></p>
     </div>
     {% endif %}

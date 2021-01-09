@@ -7,7 +7,7 @@
 
 {% block content %}
     <form class="form-signin" method="POST" action=""> {% csrf_token %}
-  <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+  <!-- <img class="mb-4" src="../media/DSCF2170_01.jpg" alt="" width="72" height="72"> -->
   <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
 {% if error %}
 {{ error }}
@@ -20,7 +20,8 @@
   <div class="checkbox mb-3">
    
   </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-  <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Signup!</button>
 </form>
+<p class="mt-5 mb-3 text-muted">If you have already registed,</p>
+<a href="{% url 'login' %}" class="btn btn-primary">Login</button>
 {% endblock content %}

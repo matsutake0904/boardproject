@@ -1,0 +1,27 @@
+/* タブレット向けレイアウト */
+@media all and (max-width: 1000px) {
+    .sidebar {
+        display: block;
+    }
+    .main_page {
+        width: 70%;
+    }
+
+    .menu_icon {
+        display: none;
+    }
+}
+
+/* モバイル向けレイアウト */
+@media all and (max-width: 670px) {
+    .sidebar {
+        display: none;
+    }
+    .main_page {
+        width: 100%;
+    }
+
+    .menu_icon{
+        display: block;
+    }
+}
