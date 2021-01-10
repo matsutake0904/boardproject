@@ -105,7 +105,7 @@ class BoardCreate(CreateView):
     fields = ('title', 'content', 'auther' , 'images', 'branch')
     # success_url = reverse_lazy('list')
     def get_success_url(self):
-        if self.request.POST.get('branch') == 0:
+        if self.request.POST.get('branch') == '0':
             print('branch == ' + str(self.request.POST.get('branch')))
             return reverse('list')
         else:
