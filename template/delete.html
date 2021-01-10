@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action='' method="POST">{% csrf_token %}
-    <input type="submit" value="Delete">
-</form>
-<a href="{% url 'list' %}">Back To List</a>
+<div class="parent_item" >
+    <h1 class="parent_header" style="color: red;">Are you sure want to delete the item?</h1>
+    <form action='' method="POST">{% csrf_token %}
+        <input type="submit" class="btn-secondary" value="Delete" style="width: 90%;display: block; margin: 0 auto;">
+    </form>    
+</div>
+<a href="{% url 'list' %}" class="btn-primary">Back To List</a>
 {% endblock content %}

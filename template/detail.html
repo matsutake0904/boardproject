@@ -23,17 +23,17 @@
     {% endif %}
       <div class="card-body">
         <p>Title: {{object.title}}</p>
-        <p>Upped by: {{object.auther}}</p>
+        <p>Uploaded by: {{object.auther}}</p>
         <p>Content: {{object.content}}</p>
     </div>
   </div>
     {% if object.checked %}
-    <a href="{% url 'checked_del' object.pk %}" class='btn btn-primary active' role="button" aria-pressed="true" >Checked!</a>
+    <a href="{% url 'checked_del' object.pk %}" class='btn btn-primary active' role="button" aria-pressed="true" >Unchecked!</a>
   {% else %}
   <a href="{% url 'checked_del' object.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Checked!</a>
   {% endif%}
    <a href="{% url 'delete' object.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >delete</a>
-  <a href="{% url 'create' object.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Resist Child MEMO!</a>
+  <a href="{% url 'create' object.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Register Child MEMO!</a>
 
   </div>  
 
@@ -45,9 +45,13 @@
   alert alert-primary child_item" role="success">
      <p>Title:<a href="{% url 'detail' item.pk %}">{{item.title}}</a></p>
      <p>Upped by: {{item.auther}}</p>
-     <a href="{% url 'checked_del' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Checked!</a>
+     {% if item.checked %}
+       <a href="{% url 'checked' item.pk %}" class='btn btn-primary active' role="button" aria-pressed="true" >Checked!</a>
+     {% else %}
+      <a href="{% url 'checked' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Not checked</a>
+    {% endif %}    
      <a href="{% url 'delete' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >delete</a>
-     <a href="{% url 'create' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Regist Child MEMO!</a>
+     <a href="{% url 'create' item.pk %}" class='btn btn-secondary active' role="button" aria-pressed="true" >Register Child MEMO!</a>
   </div>
   {% endif%}
   {% endfor %}
