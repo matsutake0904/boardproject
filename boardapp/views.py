@@ -102,7 +102,7 @@ class BoardCreate(CreateView):
     template_name = 'create.html'
     model = BoardModel
     branch = 0
-    fields = ('title', 'content', 'auther' , 'images', 'branch')
+    fields = ('title', 'content', 'auther' , 'images', 'files','branch')
     # success_url = reverse_lazy('list')
     def get_success_url(self):
         if self.request.POST.get('branch') == '0':

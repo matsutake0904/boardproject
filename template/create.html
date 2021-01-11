@@ -12,11 +12,16 @@
         </div>
         <div class="form-group">
           <label >Content</label>
-          <input type="text" class="form-control"  placeholder="content">
+          <input type="text" class="form-control"  name="content" placeholder="content">
         </div>
         <div class="create_picture">
             <label >Picture</label>
-            <input type="file" class="form-control" name="images" aria-describedby="emailHelp" placeholder="Enter email">          
+            <input type="file" class="form-control" name="images" aria-describedby="emailHelp" placeholder="Enter image">          
+            <div class="clear"></div>
+        </div>
+        <div class="create_picture">
+            <label >File</label>
+            <input type="file" class="form-control" name="files" aria-describedby="emailHelp" placeholder="Enter file">          
             <div class="clear"></div>
         </div>
         <input type="hidden" name="auther" value="{{ user.username}}">
